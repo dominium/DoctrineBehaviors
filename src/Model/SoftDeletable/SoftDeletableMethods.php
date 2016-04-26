@@ -32,6 +32,9 @@ trait SoftDeletableMethods
     public function restore()
     {
         $this->deletedAt = null;
+        if(property_exists($this, 'deletedBy')) {
+            $this->deletedBy = null;
+        }
     }
 
     /**
